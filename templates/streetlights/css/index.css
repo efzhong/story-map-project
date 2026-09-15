@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  border-width: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.map-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 0;
+}
+
+.cover-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
+}
+.map {
+  height: 100%;
+}
+
+.slide-section {
+  position: relative;
+  margin-top: -30vh;
+  z-index: 100;
+  pointer-events: none;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.slide {
+  margin-top: 90vh;
+  margin-bottom: 90vh;
+  margin-left: auto;
+  margin-right: 2rem;
+  padding: 1rem;
+  box-shadow: -0.5rem 0 1rem rgb(0 0 0 / 50%);
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  pointer-events: initial;
+
+  width: 25rem;
+
+  background-color: white;
+  color: black;
+}
+
+.slide:first-child {
+  margin-top: 0;
+}
+
+.slide:last-child {
+  margin-bottom: 40vh;
+}
+
+.story-footer {
+  position: relative;
+  z-index: 100;
+  padding: 1.5rem 2rem;
+  font-size: 0.85rem;
+  color: #444;
+  background-color: white;
+}
