@@ -15,7 +15,7 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/512/{z}/{x}/
 }).addTo(map);
 
 function getStatusColor(feature) {
-  return feature.properties.psip_status === 'N/A' ? '#b74e4f' : '#d3cc8c';
+  return feature.properties.psip_status === 'N/A' ? '#ca3433' : '#d3cc8c';
 }
 
 function bindPoleTooltip(feature, layer) {
@@ -35,8 +35,8 @@ function makePieIcon(pct, radius = 11) {
   const x = radius + radius * Math.cos(rad);
   const y = radius + radius * Math.sin(rad);
   const wedge = angle >= 359.99
-    ? `<circle cx="${radius}" cy="${radius}" r="${radius}" fill="#2596be"/>`
-    : `<path d="M ${radius} ${radius} L ${radius} 0 A ${radius} ${radius} 0 ${largeArc} 1 ${x} ${y} Z" fill="#2596be"/>`;
+    ? `<circle cx="${radius}" cy="${radius}" r="${radius}" fill="#2176d2"/>`
+    : `<path d="M ${radius} ${radius} L ${radius} 0 A ${radius} ${radius} 0 ${largeArc} 1 ${x} ${y} Z" fill="#2176d2"/>`;
   const svg = `<svg width="${radius * 2}" height="${radius * 2}" viewBox="0 0 ${radius * 2} ${radius * 2}">
     <circle cx="${radius}" cy="${radius}" r="${radius - 1}" fill="#ffffff" stroke="#333" stroke-width="1"/>
     ${wedge}
@@ -57,15 +57,16 @@ function getStreetStyle(feature) {
 }
 
 const coverImages = {
-  'title-intro': 'images/psip-workers-1.jpg',
+  'title-intro': 'images/title-intro.png',
+  'psip-overview': 'images/psip-workers-1.jpg',
   'why-led': 'images/psip-workers-2.jpeg',
 };
 
 function updateCoverImage() {
   const currentId = slides[deck.currentSlideIndex].id;
-  console.log('updateCoverImage:', window.scrollY, currentId);
   const coverEl = document.getElementById('cover-image');
   const imagePath = coverImages[currentId];
+
   if (imagePath) {
     coverEl.style.backgroundImage = `url('${imagePath}')`;
     coverEl.style.opacity = '1';
@@ -77,15 +78,19 @@ function updateCoverImage() {
 const neighborhoodSlideOptions = {
   style: (feature) => {
     if (feature.geometry.type !== 'Point') {
-      return { color: '#000', weight: 1, dashArray: '2 6', fill: false };
+      return { color: '#2176d2', weight: 3, dashArray: '2 6', fill: false };
     }
     const isUnknown = feature.properties.psip_status === 'N/A';
     const color = getStatusColor(feature);
-    return { color: color, weight: 1, fillColor: color, fillOpacity: isUnknown ? 0.85 : 0.5 };
+    return { color: color, weight: 1, fillColor: color, fillOpacity: isUnknown ? 1 : 0.5 };
   },
   pointToLayer: (feature, latlng) => L.circleMarker(latlng, { radius: 3 }),
   onEachFeature: (feature, layer) => {
-    if (feature.geometry.type === 'Point') bindPoleTooltip(feature, layer);
+    if (feature.geometry.type === 'Point') {
+      bindPoleTooltip(feature, layer);
+    } else if (layer._path) {
+      layer._path.classList.add('pulsating-boundary');
+    }
   },
 };
 

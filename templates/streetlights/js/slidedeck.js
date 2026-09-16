@@ -120,10 +120,10 @@ class SlideDeck {
 
     this.map.addEventListener('moveend', handleFlyEnd);
     if (collection.bbox) {
-      this.map.flyToBounds(boundsFromBbox(collection.bbox));
+      this.map.flyToBounds(boundsFromBbox(collection.bbox), { padding: [-40, -40] });
     } else {
-      this.map.flyToBounds(layer.getBounds());
-    }
+      this.map.flyToBounds(layer.getBounds(), { padding: [-40, -40] });
+}
   }
 
   /**

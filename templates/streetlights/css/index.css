@@ -21,6 +21,7 @@ body {
   transition: opacity 0.4s ease-out;
   pointer-events: none;
 }
+
 .map {
   height: 100%;
 }
@@ -47,7 +48,38 @@ body {
   width: 25rem;
 
   background-color: white;
-  color: black;
+  color: #0f4d90;
+}
+
+#title-intro {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 60rem;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#title-intro h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+#title-intro p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+  max-width: 40rem;
 }
 
 .slide:first-child {
@@ -66,3 +98,17 @@ body {
   color: #444;
   background-color: white;
 }
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px #2176d2); }
+  50% { filter: drop-shadow(0 0 8px #2176d2); }
+}
+
+.pulsating-boundary {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.stat-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.stat { flex: 1 1 40%; display: flex; flex-direction: column; }
+.stat-number { font-size: 1.5rem; font-weight: 700; color: #0f4d90; }
+.stat-label { font-size: 0.75rem; color: #0f4d90; opacity: 0.8; }
