@@ -5,7 +5,7 @@ window.scrollTo(0, 0);
 
 const map = L.map('map', { scrollWheelZoom: false }).setView([39.9526, -75.1652], 12);
 
-const mapboxKey = 'pk.eyJ1IjoiZXZ6aG9uZyIsImEiOiJjbXR1amU4NTgwbDJiMndvcHk0cDY1cXZwIn0.04V1QlAtr7xLGktkYOsBfw';
+const mapboxKey = 
 L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/512/{z}/{x}/{y}{r}?access_token=${mapboxKey}`, {
   tileSize: 512,
   zoomOffset: -1,
