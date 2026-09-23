@@ -139,7 +139,7 @@ body {
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgb(255 255 255 / 80%);
   color: #1a1a1a;
   min-height: 1.5rem;
 }
@@ -178,9 +178,16 @@ body {
   max-width: 10rem;
 }
 
-.text-blue { color: #2176d2; font-weight: 700; }
-.text-red { color: #d9603d; font-weight: 700; }
-.text-yellow { color: #b8860b; font-weight: 700; }
+.text-blue { color: #2176d2; 
+  font-weight: 700; }
+
+.text-red {
+  color: #d9603d;
+  font-weight: 700;
+}
+
+.text-yellow { color: #b8860b; 
+  font-weight: 700; }
 
 @media screen and (width < 960px) {
   .slide {

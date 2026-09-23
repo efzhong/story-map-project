@@ -166,8 +166,6 @@ const slideOptions = {
   'frankford': neighborhoodSlideOptions,
 };
 
-
-
 const deck = new SlideDeck(container, slides, map, slideOptions);
 
 document.addEventListener('scroll', () => {
