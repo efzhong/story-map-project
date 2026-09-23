@@ -108,10 +108,48 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.stat-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-.stat { flex: 1 1 40%; display: flex; flex-direction: column; }
-.stat-number { font-size: 1.5rem; font-weight: 700; color: #0f4d90; }
-.stat-label { font-size: 0.75rem; color: #0f4d90; opacity: 0.8; }
+#psip-stats {
+  width: 45rem;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 40%;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #2176d2;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  margin-top: 0.5rem;
+  max-width: 10rem;
+}
+
+.text-blue { color: #2176d2; font-weight: 700; }
+.text-red { color: #d9603d; font-weight: 700; }
+.text-yellow { color: #b8860b; font-weight: 700; }
 
 @media screen and (width < 960px) {
   .slide {

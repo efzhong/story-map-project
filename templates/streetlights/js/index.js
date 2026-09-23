@@ -5,7 +5,7 @@ window.scrollTo(0, 0);
 
 const map = L.map('map', { scrollWheelZoom: false }).setView([39.9526, -75.1652], 12);
 
-const mapboxKey = 
+const mapboxKey = "pk.eyJ1IjoiZXZ6aG9uZyIsImEiOiJjbXR1amU4NTgwbDJiMndvcHk0cDY1cXZwIn0.04V1QlAtr7xLGktkYOsBfw"
 L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/512/{z}/{x}/{y}{r}?access_token=${mapboxKey}`, {
   tileSize: 512,
   zoomOffset: -1,
@@ -60,19 +60,55 @@ const coverImages = {
   'title-intro': 'images/title-intro.png',
   'psip-overview': 'images/psip-workers-1.jpg',
   'why-led': 'images/psip-workers-2.jpeg',
+  'psip-highlights': 'images/psip-highlights.avif',
+};
+
+const coverColors = {
+  'psip-stats': '#000000',
 };
 
 function updateCoverImage() {
   const currentId = slides[deck.currentSlideIndex].id;
   const coverEl = document.getElementById('cover-image');
   const imagePath = coverImages[currentId];
+  const color = coverColors[currentId];
 
   if (imagePath) {
     coverEl.style.backgroundImage = `url('${imagePath}')`;
+    coverEl.style.backgroundColor = '';
+    coverEl.style.opacity = '1';
+  } else if (color) {
+    coverEl.style.backgroundImage = 'none';
+    coverEl.style.backgroundColor = color;
     coverEl.style.opacity = '1';
   } else {
     coverEl.style.opacity = '0';
   }
+}
+
+const highlights = [
+  { icon: 'ti-bike', color: '#25cef7', desc: 'Supports public safety by improving visibility for pedestrians, cyclists, and drivers at night. Learn more about the City\'s Vision Zero initiative.' },
+  { icon: 'ti-leaf', color: '#58c04d', desc: 'Cuts municipal carbon emissions by nearly 10%, more than any other efficiency project the City has undertaken. Learn more about the Municipal Energy Master Plan.' },
+  { icon: 'ti-broadcast', color: '#f3c613', desc: 'Adds remote-controlled lighting and instant outage monitoring for operational efficiencies.' },
+  { icon: 'ti-users', color: '#9400c6', desc: 'Supports local businesses and workers through an Economic Opportunity Plan and workforce development agreement.' },
+  { icon: 'ti-coin', color: '#f99300', desc: "Pays for itself entirely through energy savings, at no net cost to the City's budget." },
+];
+
+function buildHighlightsGrid() {
+  const grid = document.getElementById('highlights-grid');
+  const panel = document.getElementById('highlights-desc');
+
+  highlights.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'icon-btn';
+    btn.style.backgroundColor = item.color;
+    btn.innerHTML = `<i class="ti ${item.icon}"></i>`;
+    btn.setAttribute('aria-label', item.desc);
+    btn.addEventListener('click', () => {
+      panel.textContent = item.desc;
+    });
+    grid.appendChild(btn);
+  });
 }
 
 const neighborhoodSlideOptions = {
@@ -130,6 +166,8 @@ const slideOptions = {
   'frankford': neighborhoodSlideOptions,
 };
 
+
+
 const deck = new SlideDeck(container, slides, map, slideOptions);
 
 document.addEventListener('scroll', () => {
@@ -140,3 +178,4 @@ document.addEventListener('scroll', () => {
 deck.preloadFeatureCollections();
 deck.syncMapToCurrentSlide();
 updateCoverImage();
+buildHighlightsGrid();
