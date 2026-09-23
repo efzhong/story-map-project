@@ -99,21 +99,49 @@ body {
   background-color: white;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 2px #2176d2); }
-  50% { filter: drop-shadow(0 0 8px #2176d2); }
-}
-
-.pulsating-boundary {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-#psip-stats {
-  width: 45rem;
+#psip-highlights, #psip-stats {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  width: 40rem;
   max-width: 90vw;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  max-width: 22rem;
+  margin: 1.5rem auto 0;
+}
+
+.icon-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: white;
+  padding: 0;
+}
+
+.icon-btn i {
+  font-size: 2rem;
+}
+
+.icon-desc-panel {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1a1a1a;
+  min-height: 1.5rem;
 }
 
 .stat-row {
@@ -122,7 +150,6 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   margin-top: 1.5rem;
-  text-align: center;
 }
 
 .stat {
@@ -133,16 +160,20 @@ body {
 }
 
 .stat-number {
-  font-size: 3.5rem;
   font-weight: 800;
   color: #2176d2;
   line-height: 1;
 }
 
+.stat:nth-child(1) .stat-number { font-size: 3.5rem; }
+.stat:nth-child(2) .stat-number { font-size: 3rem; }
+.stat:nth-child(3) .stat-number { font-size: 4rem; }
+.stat:nth-child(4) .stat-number { font-size: 4.5rem; }
+
 .stat-label {
   font-size: 1rem;
   font-weight: 700;
-  color: #222;
+  color: white;
   margin-top: 0.5rem;
   max-width: 10rem;
 }
