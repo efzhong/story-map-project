@@ -4,6 +4,11 @@
 
 Find examples from previous years and elsewhere on the internet at https://github.com/Weitzman-MUSA-JavaScript/story-map-project-examples
 
+## Guidance
+
+* Keep large data files out of your repository. GitHub will be grumpy if you try to manage files that are larger than ~100MB, or if your repository is more than 1GB overall. Talk to your instructors if you need guidance on where to store and host large data files.
+* Even if your data is small enough to fit in your repository, Simplify your geospatial data appropriately (i.e. right-sized for your use case) to reduce file size and improve performance.
+
 ## Timeline
 
 This project will be our focus for the first four weeks of the course -- in week 5 we will start a new project focused on dashboards.
